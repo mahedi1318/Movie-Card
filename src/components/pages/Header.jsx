@@ -3,17 +3,25 @@ import Logo from "../../assets/logo.svg"
 import Shoppingcart from "../../assets/shopping-cart.svg"
 import Sun from "../../assets/icons/sun.svg"
 import Ring from "../../assets/ring.svg"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { MovieContext } from "../../context/Context"
+import CardAddHeader from "../addCard/CardAddHeader"
 
 
 const Header = () => {
 
 		const {state} = useContext(MovieContext)
-		console.log(state)
+		
+		const [showCard, setShowCard] = useState(false)
+
+		const handleCardShow = () =>{
+			setShowCard(!showCard)
+		}
 
   return (
     <>
+	{showCard && <CardAddHeader onClose={()=> setShowCard(!showCard)}/>}
+	
     <header>
 		<nav className="container flex items-center justify-between space-x-10 py-6">
 			<a href="index.html">
@@ -32,7 +40,7 @@ const Header = () => {
 					</a>
 				</li>
 				<li>
-					<a className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block" href="#">
+					<a onClick={handleCardShow} className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block" href="#">
 						<img src={Shoppingcart} width="24" height="24" alt="" />
 						{state.cartData.length > 0 && (
 							<span className="absolute top-[-10px] left-[25px] bg-yellow-600 w-[25px] h-[25px] rounded-full text-center">{state.cartData.length}</span>

@@ -13,6 +13,16 @@ const cartReducers = (state, action) => {
             }
         }
         break;
+        case "remove_data": {
+            return {
+                ...state,
+                cartData: state.cartData.filter((item)=> item.id !== action.payload)
+            }
+        }
+        break;
+        default: {
+            break;
+        }
     }
 }
 

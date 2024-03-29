@@ -30,11 +30,13 @@ const MovieCard = ({movie}) => {
 				...catchMovie
 			}})
 		}
+		setDetailsShowModal(false)
 	}
+
 
   return (
     <>
-	{detailsShowModal && <MovieDetails selectedMovie={selectedMovie} onClose={()=> setDetailsShowModal(!detailsShowModal)}/> }
+	{detailsShowModal && <MovieDetails selectedMovie={selectedMovie} onClose={()=> setDetailsShowModal(!detailsShowModal)} onCardAdd={handleAddToCard}/> }
 		
         <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
 			<a onClick={()=>handleMovieDetailsFun(movie)} href="#">

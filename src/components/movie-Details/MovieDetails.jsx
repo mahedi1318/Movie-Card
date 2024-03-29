@@ -1,7 +1,7 @@
 import React from 'react'
 import { getAllImgurl } from '../../utils/MovieUrl'
 
-const MovieDetails = ({onClose, selectedMovie}) => {
+const MovieDetails = ({onClose, selectedMovie, onCardAdd}) => {
   return (
     <>
     <div
@@ -29,7 +29,7 @@ const MovieDetails = ({onClose, selectedMovie}) => {
             {selectedMovie.descreption}
             </p>
             <div className="grid lg:grid-cols-2 gap-2">
-              <a
+              <a onClick={(e)=> onCardAdd(e, selectedMovie)}
                 className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
                 href="#"
               >
